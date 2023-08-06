@@ -26,7 +26,8 @@ export const login = async (loginData: loginRequest) => {
                 'Content-Type': 'application/json'
             }
         });
-        return response.data;
+        localStorage.setItem('gipucmgpoc',response.data);
+        return true;
     } catch (error) {
         throw error;
     }
