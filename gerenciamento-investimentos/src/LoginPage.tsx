@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { Container, Typography, TextField, Button, Link } from '@mui/material';
 import { useNavigate } from 'react-router';
-import { login } from './services/api';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useAuth } from './contexts/AuthContext';
+import { Navigate } from 'react-router-dom';
 
-const LoginPage: React.FC = () => {
+const LoginPage: React.FC = () =>{
     const navigate = useNavigate();
+    const { login, isLoggedIn } = useAuth();
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -16,7 +18,7 @@ const LoginPage: React.FC = () => {
         try {
             const loginData = {email, password};
             await login(loginData);
-            navigate('/dashboard')
+            navigate('/dashboard');
         } catch (error) {
             console.error('Error login:', error);
             toast.error('Erro no login', {
@@ -26,8 +28,8 @@ const LoginPage: React.FC = () => {
         }
     }
 
-  return (
-    <Container maxWidth="sm">
+  return isLoggedIn? <Navigate to="/dashboard" /> :
+    (<Container maxWidth="sm">
       <Typography variant="h4" align="center" gutterBottom marginTop={5}>
         Login
       </Typography>

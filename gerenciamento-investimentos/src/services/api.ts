@@ -3,7 +3,7 @@ import { createUserRequest } from '../interfaces/createUser'
 import { loginRequest } from '../interfaces/login';
 
 const api = axios.create({
-  baseURL: 'http://localhost:32771/api',
+  baseURL: 'http://localhost:32769/api',
 });
 
 export const createUser = async (userData: createUserRequest) => {
@@ -19,7 +19,7 @@ export const createUser = async (userData: createUserRequest) => {
   }
 };
 
-export const login = async (loginData: loginRequest) => {
+export const apiLogin = async (loginData: loginRequest) => {
     try {
         const response = await api.post('/users/login', loginData, {
             headers :{
