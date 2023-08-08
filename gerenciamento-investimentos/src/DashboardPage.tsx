@@ -55,7 +55,7 @@ const DashboardPage: React.FC = () => {
 
   return (
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '1rem', flexWrap: 'wrap', gap: '2rem'}}>
-      <Card variant="outlined" style={{ minWidth: 300 }}>
+      <Card variant="outlined" style={{  width: '100%', minWidth: 300, maxWidth: '50vh' }}>
         <CardContent>
           <Typography variant="h6" gutterBottom>
             Meu patrimônio
@@ -68,7 +68,7 @@ const DashboardPage: React.FC = () => {
         <Button style={{display: 'flex', marginLeft: 'auto'}} >Ver investimentos</Button>
       </Card>
 
-      <Card variant="outlined" style={{ minWidth: 300 }}>
+      <Card variant="outlined" style={{ width: '100%', minWidth: 300, maxWidth: '50vh' }}>
         <CardContent>
           <Line options={options} data={datalinhas} />
         </CardContent>
