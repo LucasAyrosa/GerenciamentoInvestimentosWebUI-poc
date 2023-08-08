@@ -108,7 +108,7 @@ const SidebarLayout: React.FC = () =>  {
             </Fab>
           </Zoom>
           {openButton && (
-              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '0.25rem'}}>
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '0.25rem', position: 'fixed', bottom: '20px', right: '20px'}}>
                 <Zoom in={openButton}>
                 <Fab variant='extended' color="secondary" onClick={() => handleRedirect('/operacao/nova')}>
                     <AddIcon /> Operação
