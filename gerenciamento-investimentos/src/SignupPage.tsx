@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { Container, Typography, TextField, Button, Link } from '@mui/material';
 import { createUser } from './services/api';
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
+import { useAuth } from './contexts/AuthContext';
 
 
-const SignupPage: React.FC = () => {
+const SignupPage: React.FC = () =>{
   const navigate = useNavigate();
+  const {isLoggedIn} = useAuth();
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -22,7 +24,7 @@ const SignupPage: React.FC = () => {
     }
   };
 
-  return (
+  return isLoggedIn ? <Navigate to="/dashboard" /> : (
     <Container component="main" maxWidth="sm">
         <Typography variant="h4" align="center" gutterBottom marginTop={5}>
           Nova conta

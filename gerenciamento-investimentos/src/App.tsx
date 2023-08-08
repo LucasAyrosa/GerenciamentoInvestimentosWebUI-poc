@@ -4,18 +4,29 @@ import LoginPage from './LoginPage';
 import SignupPage from './SignupPage';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import SidebarLayout from './components/SidebarLayout';
+import DashboardPage from './DashboardPage';
+import { AuthProvider } from './contexts/AuthContext';
+import {useAuth} from './contexts/AuthContext';
 
 function App() {
+  const { isLoggedIn } = useAuth();
+
   return (
-    <>
-    <Router>
-    <Routes>
-      <Route path="/login" Component={LoginPage} />
-      <Route path='/signup' Component={SignupPage} />
-    </Routes>
-  </Router>
-  <ToastContainer position="top-right" autoClose={3000} />
-  </>
+    <React.StrictMode>
+      <AuthProvider >
+        <Router>
+          <Routes>
+            <Route path="/login" Component={LoginPage} />
+            <Route path='/signup' Component={SignupPage} />
+            <Route path="/" element={<SidebarLayout />} >
+              <Route path="/dashboard" element={<DashboardPage />} />
+            </Route>
+          </Routes>
+        </Router>
+        <ToastContainer position="top-right" autoClose={3000} />
+      </AuthProvider>
+    </React.StrictMode>
   );
 }
 
