@@ -1,10 +1,25 @@
 import axios from 'axios';
 import { createUserRequest } from '../interfaces/createUser'
 import { loginRequest } from '../interfaces/login';
+import { createOperationRequest } from '../interfaces/createOperation';
 
 const api = axios.create({
   baseURL: 'http://localhost:32769/api',
 });
+
+export const insertOperation = async (operationData: createOperationRequest) => {
+  try {
+    const response = await api.post('/operations', operationData, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem('gipucmgpoc')}`
+      }
+    });
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+}
 
 export const createUser = async (userData: createUserRequest) => {
   try {
