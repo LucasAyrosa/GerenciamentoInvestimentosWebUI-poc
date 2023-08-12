@@ -8,6 +8,7 @@ import SidebarLayout from './components/SidebarLayout';
 import DashboardPage from './DashboardPage';
 import { AuthProvider } from './contexts/AuthContext';
 import {useAuth} from './contexts/AuthContext';
+import AddOperationPage from './AddOperationPage';
 
 function App() {
   const { isLoggedIn } = useAuth();
@@ -21,6 +22,7 @@ function App() {
             <Route path='/signup' Component={SignupPage} />
             <Route path="/" element={<SidebarLayout />} >
               <Route path="/dashboard" element={<DashboardPage />} />
+              <Route path='/operacao/nova' element={<AddOperationPage />} />
             </Route>
           </Routes>
         </Router>
