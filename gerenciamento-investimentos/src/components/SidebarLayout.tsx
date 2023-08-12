@@ -21,6 +21,7 @@ import { Navigate, Outlet, useNavigate } from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
+import { AccountBalanceWallet, Close, Dashboard, Savings } from '@mui/icons-material';
 
 
 const SidebarLayout: React.FC = () =>  {
@@ -86,16 +87,30 @@ const SidebarLayout: React.FC = () =>  {
         {/* </DrawerHdeader> */}
         <Divider />
         <List>
-          {['Dashboard', 'Operações', 'Proventos'].map((text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  {/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />} */}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItemButton>
-            </ListItem>
-          ))}
+          <ListItem key={'dashboard'} disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                <Dashboard />
+              </ListItemIcon>
+              <ListItemText>Dashboard</ListItemText>
+            </ListItemButton>
+          </ListItem>
+          <ListItem key={'Operações'} disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                <AccountBalanceWallet />
+              </ListItemIcon>
+              <ListItemText>Operações</ListItemText>
+            </ListItemButton>
+          </ListItem>
+          <ListItem key={'Proventos'} disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                <Savings />
+              </ListItemIcon>
+              <ListItemText>Proventos</ListItemText>
+            </ListItemButton>
+          </ListItem>
         </List>
       </Drawer>
       {/* <Main open={open}>
@@ -107,8 +122,13 @@ const SidebarLayout: React.FC = () =>  {
               <AttachMoneyIcon />
             </Fab>
           </Zoom>
+          <Zoom in={openButton}>
+            <Fab color="secondary" aria-label="options" onClick={handleButtonClick} style={{position: 'fixed', bottom: '20px', right: '20px'}}>
+              <Close />
+            </Fab>
+          </Zoom>
           {openButton && (
-              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '0.25rem', position: 'fixed', bottom: '20px', right: '20px'}}>
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '0.25rem', position: 'fixed', bottom: '80px', right: '20px'}}>
                 <Zoom in={openButton}>
                 <Fab variant='extended' color="secondary" onClick={() => handleRedirect('/operacao/nova')}>
                     <AddIcon /> Operação
